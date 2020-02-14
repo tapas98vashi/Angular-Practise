@@ -1,0 +1,62 @@
+<body bgcolor="#afafaf">
+  <style>
+      #employees {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      #employees td, #employees th {
+        border: 1px  #ddd;
+        padding: 8px;
+      }
+
+      .button, .abc{
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      #employees tr:nth-child(even){background-color: #f2f2f2;}
+
+      #employees tr:hover {background-color: #ddd;}
+
+      #employees th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+      }
+      </style>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<button routerLink="add" style="font-size:15px" class="button">+ Add record</button>
+<table id="employees">
+    <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Department</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let employee of employees$ | async">
+        <td>{{employee.fullName}}</td>
+        <td>{{employee.emailId}}</td>
+        <td>{{employee.mobileNumber}}</td>
+        <td><span *ngFor="let add of employee.address">{{add.street +  add.city +  add.state +  add.zipCode}}</span></td>
+        <td>{{employee.department}}</td>
+        <td><button (click)="onEdit(employee.id)" style="font-size:20px">Edit<i class="material-icons">border_color</i></button></td>
+        <td><button (click)="onDelete(employee.id)" style="font-size:20px">Delete<i class="fa fa-trash-o"></i></button></td>
+    </tr>
+</table>

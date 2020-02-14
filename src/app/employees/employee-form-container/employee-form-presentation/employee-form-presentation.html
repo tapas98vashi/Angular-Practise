@@ -1,0 +1,87 @@
+<style>
+  input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+#forms {
+  border-radius: 5px;
+  background-color: #afafaf;
+  padding: 20px;
+}
+</style>
+<h1 style="text-align: center">Registration Form </h1>
+<div id="forms">
+<form [formGroup]="empForm" (ngSubmit)="onSubmit()" style="text-align:justify;">
+    <div>
+        <b style="font-size: larger;"> Enter the Full Name :</b><br>
+        <input type="text" formControlName="fullName"  size="120"/><br>
+        <div *ngIf="f.fullName.invalid && (f.fullName.dirty || f.fullName.touched)">
+         <div *ngIf="f.fullName.errors.minlength" style="color: red;">
+           <b>Name must be atleast 4 character long</b>
+         </div>
+       </div>
+       <br>
+      <b style="font-size: larger;">Enter the Email :</b> <br>
+       <input type="text" formControlName="emailId"  size="120"/><br>
+       <br>
+       <b style="font-size: larger;"> Enter the Mobile Number :</b><br>
+       <input type="text" formControlName="mobileNumber" size="120"/><br>
+       <div *ngIf="f.mobileNumber.invalid && (f.mobileNumber.dirty || f.mobileNumber.touched)">
+        <div *ngIf="f.mobileNumber.errors.minlength || f.mobileNumber.errors.maxlength" style="color: red;">
+          <b>Mobile number should be of 10 digits.</b>
+        </div>
+      </div>
+      <br>
+    <b style="font-size: larger;">Enter the Address : </b><br>
+       <div formArrayName="address" *ngFor="let add of empForm.get('address').controls ; let i = index;">
+       <div [formGroupName]="i">
+         Street:<input type="text" formControlName="street" size="50">
+         City:<input type="text" formControlName="city" size="30">
+         State:<input type="text" formControlName="state" size="30">
+         ZipCode:<input type="text" formControlName="zipCode" size="30">
+       </div>
+       </div>
+        <br>
+       <b style="font-size: larger;">Gender : </b><br>
+       <input type="radio" formControlName="gender" value="male"/>
+       <label> Male </label><br>
+       <input type="radio" formControlName="gender" value="female"/>
+       <label> Female </label><br>
+       <input type="radio" formControlName="gender" value="others"/>
+       <label> Others </label><br>
+       <br><b>Department:</b><br>
+       <select formControlName="department">
+        <option value="">Choose your department</option>
+        <option *ngFor="let department of departments" >{{department}}</option>
+      </select>
+    </div>
+    <br>
+    <label ><b style="font-size: larger;">Hire date:</b><br>
+      <input type="date" id="start" name="hiredate" value="2018-07-22" min="1900-01-01" max="3000-12-31" formControlName="hireDate" size="50"><br><br>
+</label><br>
+    <input type="checkbox" formControlName="permanent"><b style="font-size: larger;">Permanent Employee</b><br><br>
+    <button type="submit" [disabled]="!empForm.valid">Register</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="reset">Clear</button>
+</form>
+</div>
