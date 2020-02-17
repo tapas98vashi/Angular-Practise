@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
+import { EmployeesModule } from '../../employees.module';
 
 @Component({
   selector: 'app-employee-list-presentation-ui',
@@ -17,7 +18,18 @@ export class EmployeeListPresentation{
     @Output() editEvent = new EventEmitter<number>();
     // Creating search event to emit.
     @Output() searchEvent = new EventEmitter<string>();
-    constructor() {}
+    // Employee object inputted
+    @Input() employees;
+    // Created sort event to emit
+    @Output() sort = new EventEmitter<Employee[]>();
+    // Created order event for asc and desc
+    @Output() order = new EventEmitter<boolean>();
+
+    flag: boolean; // Used to change between asc and desc 
+
+    constructor() {
+    this.flag = false;
+    }
 
     /**
      * 
@@ -41,8 +53,19 @@ export class EmployeeListPresentation{
      * 
      * @param searchText Used to emit an event for searching.
      */
-    searchByName(searchText)
+    search(searchText: string)
     {
         this.searchEvent.emit(searchText);
+    }
+
+    /**
+     * Function used for sorting
+     */
+    sortByName()
+    {
+        this.flag = !this.flag;
+        console.log(this.flag);
+        this.sort.emit(this.employees);
+        this.order.emit(this.flag);
     }
 }

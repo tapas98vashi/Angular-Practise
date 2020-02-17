@@ -33,7 +33,7 @@ export class EmployeeFormContainer implements OnInit{
    * 
    * If condition to decide whether to add or edit the data.
    */
-  createEmployee(empForm: FormGroup)
+  createEmployee(empForm: Employee)
   {
     if(this.id)
     {

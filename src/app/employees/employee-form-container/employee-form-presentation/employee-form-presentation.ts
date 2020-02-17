@@ -14,8 +14,8 @@ export class EmployeeFormPresentation implements OnChanges{
 
   // Input property to input employee
   @Input() employee: Employee
-  // Output property 
-  @Output() createEvent = new EventEmitter<FormGroup>()
+  // Output property for create event 
+  @Output() createEvent = new EventEmitter<Employee>()
 
   // Injected EmployeeFormPresenter Service into the constructor 
   constructor(private empFormPresenter:EmployeeFormPresenter){}
@@ -53,7 +53,7 @@ export class EmployeeFormPresentation implements OnChanges{
    */
   onSubmit()
   {
-    this.createEvent.emit(this.empForm);
+    this.createEvent.emit(this.empForm.value);
     
   }
 }

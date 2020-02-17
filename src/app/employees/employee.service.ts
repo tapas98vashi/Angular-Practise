@@ -6,6 +6,7 @@ import { FormGroup } from '@angular/forms';
 import { environment } from '../../environments/environment';
 
 @Injectable()
+
 export class EmployeeService {
 
   apiUrl: string;
@@ -36,14 +37,13 @@ export class EmployeeService {
   {
     return this.httpClient.get<Employee>(`${this.apiUrl}`+`/${id}`);
   }
-
   /**
    * 
    * @param employee Adds another data to form group
    */
-  addData(employee: FormGroup)
+  addData(employee: Employee): Observable<Employee>
   {
-    return this.httpClient.post(`${this.apiUrl}`, employee.value);
+    return this.httpClient.post<Employee>(`${this.apiUrl}`, employee);
   }
 
   /**
@@ -51,20 +51,20 @@ export class EmployeeService {
    * @param employee Updating another data in the form group
    * @param id It will help to select which id to update
    */
-  editData(employee: FormGroup, id: number)
+  editData(employee: Employee, id: number): Observable<Employee>
   {
-    return this.httpClient.put(`${this.apiUrl}`+`/${id}`, employee.value);
+    return this.httpClient.put<Employee>(`${this.apiUrl}`+`/${id}`, employee);
   }
 
   /**
    * 
    * @param id Fetching a particular id and deleting it
    */
-  deleteData(id: number)
+  deleteData(id: number): Observable<Employee>
   {
     if(confirm('Are you Sure you want to delete?'))
     {
-      return this.httpClient.delete(`${this.apiUrl}`+`/${id}`);
+      return this.httpClient.delete<Employee>(`${this.apiUrl}`+`/${id}`);
     }
   }
 
@@ -72,13 +72,26 @@ export class EmployeeService {
    * 
    * @param id Id is used to navigate to another container.
    */
-  getId(id: number)
+  getId(id: number): void
   {
       this.route.navigate(['/employee-form-container', id]);
   }
 
+  /**
+   * 
+   * @param Employee Used for server side searching.
+   */
   searchEmployee(employee: Employee): Observable<Employee[]> 
   {
       return this.httpClient.get<Employee[]>(`${this.apiUrl}?q=${employee}`);
+  }
+
+  /**
+   * 
+   * @param orderString Used for server side sorting
+   */
+  sortEmployee(orderString: string): Observable<Employee[]>
+  {
+    return this.httpClient.get<Employee[]>(`${this.apiUrl}?_sort=fullName&_order=${orderString}`);
   }
 }

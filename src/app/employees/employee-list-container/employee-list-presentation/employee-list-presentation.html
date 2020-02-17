@@ -40,10 +40,10 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <button routerLink="add" style="font-size:15px" class="button">+ Add record</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<p class="abc">Search:</p> <input type="text" style="font-size:25px" placeholder="Enter your text here" (keyup)="searchByName($event.target.value)">
+<p class="abc">Search:</p> <input type="text" style="font-size:25px" placeholder="Enter your text here" (keyup)="search($event.target.value)">
 <table id="employees">
     <tr>
-        <th>Full Name</th>
+        <th (click)="sortByName()">Full Name &#8645;</th>
         <th>Email</th>
         <th>Mobile</th>
         <th>Address</th>
