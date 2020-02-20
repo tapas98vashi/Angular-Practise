@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentRef, ComponentFactory} from '@angular/core';
 import { ComponentPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { DynamicComponent } from '../../dynamic/dynamic.component';
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-directive-presentation',
@@ -10,12 +11,13 @@ import { DynamicComponent } from '../../dynamic/dynamic.component';
 })
 export class DirectivePresentationComponent implements OnInit {
 
-  @ViewChild('messagecontainer', { read: ViewContainerRef,static :true }) entry: ViewContainerRef;
-
+  @ViewChild('messagecontainer', { read: ViewContainerRef, static : true }) entry: ViewContainerRef;
+  @ViewChild('templatePortalContent', {static : true}) templatePortalContent: TemplateRef<any>;
   selectedPortal: Portal<any>;
   componentPortal: ComponentPortal<DynamicComponent>;
+  templatePortal: TemplatePortal<any>;
 
-  constructor(private resolver: ComponentFactoryResolver) { }
+  constructor(private resolver: ComponentFactoryResolver, public overlay: Overlay, public viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
   }
@@ -30,17 +32,23 @@ export class DirectivePresentationComponent implements OnInit {
   destroyComponent() {
     this.entry.clear();
   }
-  
-  AddCdk()
-  {
+
+  Addportal(): void {
     this.componentPortal = new ComponentPortal(DynamicComponent);
     this.selectedPortal = this.componentPortal;
   }
-
-  Destroycdk()
-  {
+  destroyComponentportal() {
     this.selectedPortal.detach();
   }
 
-
+  Addoverlay(){
+    let config = new OverlayConfig();
+    config.positionStrategy = this.overlay.position().global().centerHorizontally().centerVertically();
+    config.hasBackdrop = true;
+    let overlayRef = this.overlay.create(config);
+    overlayRef.backdropClick().subscribe(() => {
+    overlayRef.dispose();
+    })
+    overlayRef.attach(new ComponentPortal(DynamicComponent, this.viewContainerRef));
+  }
 }

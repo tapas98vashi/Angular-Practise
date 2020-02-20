@@ -1,15 +1,23 @@
 <div style="text-align:center">
+    
     <h1>
         Factory Resolver Method
     </h1>
     <button (click)="Add()">ADD</button>&nbsp;&nbsp;&nbsp;
     <button (click)="destroyComponent()">Destroy Component</button>
-    <ng-template #messagecontainer>
-    </ng-template>
+    <ng-template #messagecontainer></ng-template>
+    
     <h1>
-        Cdk-portal Method
+        Cdk Portal Method
     </h1>
-    <button (click)="AddCdk()">ADD</button>&nbsp;&nbsp;&nbsp;
-    <button (click)="Destroycdk()">Destroy Component</button>
+    <button (click)="Addportal()">ADD</button>&nbsp;&nbsp;&nbsp;
+    <button (click)="destroyComponentportal()">Destroy Component</button>
+    <div>
+    <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+    </div>
 
+    <h1>
+        Overlay Method
+    </h1>
+    <button (click)="Addoverlay()">ADD</button>
 </div>
