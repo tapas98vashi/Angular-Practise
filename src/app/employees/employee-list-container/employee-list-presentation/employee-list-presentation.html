@@ -1,0 +1,43 @@
+<body>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<button routerLink="employee-form-container" style="font-size:15px" class="button">Add Record</button>&nbsp;&nbsp;&nbsp;&nbsp;
+<p class="abc">Search:</p><input type="text" style="font-size:25px" placeholder="Enter your text here" (keyup)="searchData($event.target .value)">
+<table id="employees">
+    <tr>
+        <th>Full Name
+            <button id="fullName" (click)="sortAsc()"><i class="up"></i></button>
+            <button id="fullName" (click)="sortDesc()"><i class="down"></i></button>
+        </th>
+        <th>Email
+            <button id="emailId" (click)="sortAsc()"><i class="up"></i></button>
+            <button id="emailId" (click)="sortDesc()"><i class="down"></i></button>
+        </th>
+        <th>Mobile
+            <button id="mobileNumber" (click)="sortAsc()"><i class="up"></i></button>
+            <button id="mobileNumber" (click)="sortDesc()"><i class="down"></i></button>
+        </th>
+        <th>Address</th>
+        <th>Department
+            <button id="department" (click)="sortAsc()"><i class="up"></i></button>
+            <button id="department" (click)="sortDesc()"><i class="down"></i></button>
+        </th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let employee of employees$">
+        <td>{{employee.fullName}}</td>
+        <td>{{employee.emailId}}</td>
+        <td>{{employee.mobileNumber}}</td>
+        <td><span *ngFor="let add of employee.address">
+        {{add.street + add.city + add.state + add.zipCode}}</span></td>
+        <td>{{employee.department}}</td>
+        <td><button routerLink="employee-form-container/{{employee.id}}" style="font-size:20px">Edit<i class="material-icons">border_color</i></button></td>
+        <td><button (click)="onDelete(employee.id)" style="font-size:20px">Delete<i class="fa fa-trash-o"></i></button></td>
+    </tr>
+</table>
+</body>

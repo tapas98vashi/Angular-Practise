@@ -1,0 +1,130 @@
+{
+  "employees": [
+    {
+      "fullName": "Sonik Sir Kapadia",
+      "emailId": "sonik.kapadia@1rivet.com",
+      "address": [
+        {
+          "city": "Valsad",
+          "street": "Vashi Street",
+          "zipCode": "396001",
+          "state": "Gujarat"
+        }
+      ],
+      "mobileNumber": "9825116154",
+      "department": "Angular",
+      "gender": "male",
+      "hireDate": "2020-02-08",
+      "permanent": "",
+      "id": 2
+    },
+    {
+      "fullName": "Mitul Patel",
+      "emailId": "mitul.patel@1rivet.com",
+      "address": [
+        {
+          "city": "Valsad",
+          "street": "Halar road",
+          "zipCode": "396001",
+          "state": "Gujarat"
+        }
+      ],
+      "mobileNumber": "7889455625",
+      "department": "Angular",
+      "gender": "male",
+      "hireDate": "2020-02-29",
+      "permanent": true,
+      "id": 3
+    },
+    {
+      "fullName": "Khizar Shaikh",
+      "emailId": "khizar.shaik@1rivet.com",
+      "address": [
+        {
+          "city": "Valsad",
+          "street": "Chipwad road ",
+          "zipCode": "396001",
+          "state": "Gujarat"
+        }
+      ],
+      "mobileNumber": "7946132559",
+      "department": ".Net",
+      "gender": "male",
+      "hireDate": "2020-02-16",
+      "permanent": "",
+      "id": 4
+    },
+    {
+      "fullName": "Ronak Patel",
+      "emailId": "ronak.patel@1rivet.com",
+      "address": [
+        {
+          "city": "Navsari",
+          "street": "Railway road",
+          "zipCode": "396009",
+          "state": "Gujarat"
+        }
+      ],
+      "mobileNumber": "9988776665",
+      "department": "Angular",
+      "gender": "female",
+      "hireDate": "2020-02-17",
+      "permanent": true,
+      "id": 5
+    },
+    {
+      "fullName": "Nitesh Sharma",
+      "emailId": "nitesh.sharma@1rivet.com",
+      "address": [
+        {
+          "city": "Valsad",
+          "street": "Vashi Street",
+          "zipCode": "396001",
+          "state": "Gujarat"
+        }
+      ],
+      "mobileNumber": "9900667722",
+      "department": "Angular",
+      "gender": "male",
+      "hireDate": "2020-02-22",
+      "permanent": "",
+      "id": 6
+    },
+    {
+      "fullName": "Ketan Patel ",
+      "emailId": "ketan.patel@1rivet.com",
+      "address": [
+        {
+          "city": "Valsad",
+          "street": "Dharamdas Chambers",
+          "zipCode": "122332",
+          "state": "Gujarat"
+        }
+      ],
+      "mobileNumber": "1234567892",
+      "department": "Angular",
+      "gender": "male",
+      "hireDate": "2020-02-01",
+      "permanent": "",
+      "id": 7
+    },
+    {
+      "fullName": "Tapas Vashi",
+      "emailId": "tapasvashi98@gmail.com",
+      "address": [
+        {
+          "city": "Valsad",
+          "street": "Vashi Street",
+          "zipCode": "396001",
+          "state": "Gujarat "
+        }
+      ],
+      "mobileNumber": "9429784103",
+      "department": "Angular",
+      "gender": "male",
+      "hireDate": "2020-02-22",
+      "permanent": "",
+      "id": 8
+    }
+  ]
+}
