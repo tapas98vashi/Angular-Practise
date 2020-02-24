@@ -17,7 +17,13 @@ export class DirectivePresentationComponent implements OnInit {
   componentPortal: ComponentPortal<DynamicComponent>;
   templatePortal: TemplatePortal<any>;
 
-  constructor(private resolver: ComponentFactoryResolver, public overlay: Overlay, public viewContainerRef: ViewContainerRef) { }
+  public name: string;
+  public emojiType: string;
+  public value: string;
+
+  constructor(private resolver: ComponentFactoryResolver, public overlay: Overlay, public viewContainerRef: ViewContainerRef) {
+    this.value = '0';
+  }
 
   ngOnInit() {
   }

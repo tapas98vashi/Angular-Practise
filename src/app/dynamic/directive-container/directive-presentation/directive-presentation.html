@@ -1,5 +1,5 @@
-<div style="text-align:center">
-    
+<body bgcolor="33F0FF">
+<div style="text-align:center">  
     <h1>
         Factory Resolver Method
     </h1>
@@ -20,4 +20,27 @@
         Overlay Method
     </h1>
     <button (click)="Addoverlay()">ADD</button>
-</div>
+    </div><br><br>
+    <form style="text-align:center">
+       <h1>Emoji Type</h1><br>
+       <input type="radio" name="emoji" value="happy" [(ngModel)]="emojiTypes"/>
+       <label> Happy </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <input type="radio" name="emoji" value="angry" [(ngModel)]="emojiTypes"/>
+       <label> Angry </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <input type="radio" name="emoji" value="sad" [(ngModel)]="emojiTypes"/>
+       <label> Sad </label>
+       <h1 style="font-size: 120px;">{{emojiTypes | emoji}}</h1>
+    </form>
+
+    <h1 style="text-align: center">Plural</h1>
+    <p style="text-align: center"><input type="text" [(ngModel)]="value"/></p>
+    <div [ngPlural]="value" style="text-align: center">
+    <ng-template ngPluralCase="=0">Zero</ng-template>
+    <ng-template ngPluralCase="=1">One</ng-template>
+    <ng-template ngPluralCase="=2">Two</ng-template>
+    <ng-template ngPluralCase="=3">Few</ng-template>
+    <ng-template ngPluralCase="=4">Many</ng-template>
+    <ng-template ngPluralCase="other">Others</ng-template>
+    </div>
+</body>
+
